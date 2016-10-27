@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="mapp">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="js/angular.min.js"></script>
+</head>
+<body >
+	<div ng-controller="maincontroller">
+		username:<input type="text"  ng-model="myname"/>
+		password:<input type="password"  ng-model="mypassword"/>
+		<input type="button" value="submit" ng-click="change()"/><br/>
+		<input type="checkbox" ng-model="isChecked"/>{{isChecked}}
+
+		<textarea name="" ng-model="mytext"></textarea>{{mytext}}
+
+		
+	</div>
+
+	<script>
+		var m1  = angular.module("mapp",[]);
+		m1.controller('maincontroller', ['$scope', function($scope){
+			// $scope.myname = "213213";
+			$scope.isChecked = false;
+
+			$scope.change = function(){
+				console.log($scope.myname);
+				//获取username  password, 然后提交用户名 密码 到后台接口
+				console.log($scope.mypassword);
+				console.log($scope.isChecked);
+				console.log($scope.mytext);
+			}
+		}])
+
+
+		/*
+			(1)ng-model 只能绑定有value值的标签.
+		*/
+	</script>
+</body>
+</html>

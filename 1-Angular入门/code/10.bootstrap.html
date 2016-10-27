@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+
+
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="js/angular.min.js"></script>
+</head>
+<body >
+	<div id="div1" >
+		<div ng-controller="main">
+			{{name}}
+		</div>
+	</div>
+
+	<div id="div2" >
+		<div ng-controller="main">
+			{{name}}
+		</div>
+	</div>
+
+	<script>
+	var m1 = angular.module("myapp1",[]); //创建一个了一模块
+	m1.controller('main', ['$scope', function($scope){
+		$scope.name = "kerwin1111";
+	}])
+
+
+	//angular.bootstrap("进行angular 解析的Dom节点",[加载的模块])；
+
+	// angular.bootstrap(document.documentElement,["myapp1"])
+	angular.bootstrap(document.getElementById("div1"),["myapp1"]);
+	
+	
+
+	var m2 = angular.module("myapp2",[]); //创建一个了一模块
+	m2.controller('main', ['$scope', function($scope){
+		$scope.name = "kerwin22222";
+	}])
+
+	angular.bootstrap(document.getElementById("div2"),["myapp2"]);
+
+	</script>
+</body> 
+</html>

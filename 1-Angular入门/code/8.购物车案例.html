@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html ng-app='myapp'>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script src="js/angular.js"></script>
+
+</head>
+
+<body>
+
+<div ng-controller="Aaa">
+	<p>价格:<input type="text" ng-model="iphone.money"></p>
+    <p>个数:<input type="text" ng-model="iphone.num"></p>
+
+    <p>费用:<span>{{sum()}}</span></p>
+    <p>运费:<span>{{iphone.fre}}</span></p>
+    <p>总额:<span>{{sum() + iphone.fre}}</span></p>
+</div>
+
+<script>
+var app = angular.module("myapp",[]);
+app.controller('Aaa', ['$scope', function($scope){
+	$scope.iphone ={
+		num:1,
+		money:5,
+		fre:10
+	}
+
+	$scope.sum = function(){
+		return $scope.iphone.money*$scope.iphone.num;
+	}
+
+
+	//angular 中通过$watch方法 监控 变量， 监控对象， 监控函数返回值是否发生改变
+
+	//(1)监控变量或者对象属性的写法
+	// $scope.name = "";
+	// $scope.$watch("iphone.money",function(newvalue,oldvalue){
+	// 	console.log(newvalue);
+	// })
+	
+
+	//(2)监控对象
+	// $scope.$watch("iphone",function(newvalue,oldvalue){
+	// 	console.log(newvalue);
+	// },true);
+
+	//(3)监听函数返回值，
+	$scope.$watch($scope.sum,function(newvalue,oldvalue){
+		console.log(newvalue);
+	
+		if(newvalue>100){
+			$scope.iphone.fre = 0;
+		}else{
+			$scope.iphone.fre = 10;
+		}
+	})
+}])
+
+
+</script>
+</body>
+</html>

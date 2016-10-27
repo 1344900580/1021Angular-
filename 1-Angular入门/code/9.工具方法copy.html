@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="js/jquery-1.11.1.js"></script>
+<script src="js/angular.min.js"></script>
+
+</head>
+<body >
+	<div id="div1"></div>
+	<script>
+		var a = {name :"kerwin"};
+
+		//1.浅复制，引用
+		// b = a;   
+		// b.name ="xiaoming";
+		// console.log(a);   //xiaoming
+		// console.log(b);   //xiaoming
+
+
+		// 2. 深复制
+		// var b = {};
+		// for(data in a){
+		// 	b[data] =a[data];
+		// }
+		// b.name= "xiaoming";
+		// console.log(a);  //kerwin
+		// console.log(b);  //xiaoming
+		var b={};
+		angular.copy(a,b); //深copy
+		b.name = "xiaoming";
+		console.log(a);  //kerwin
+		console.log(b);  //xiaoming
+
+		
+		var c = {name:"xiaoming",gender:"male"};
+		var d= {name:"xiaogang",age:100};
+
+		angular.extend(c,d);
+		
+		//混入， 对同名进行覆盖， 对于不同名进行复制
+
+		//console.log(angular.isArray("dwadwa"));
+
+		var arr=  ["111","222","333"];
+		angular.forEach(arr,function(child){
+			console.log(child);
+		})
+
+		// angular.fromJson 将json字符串 转换成json对象
+		//angular.toJson 将json对象 转换成json字符串
+
+
+		angular.element(document.getElementById("div1")).addClass("dwadwa");	
+		
+		//只要引入jquery js  angular.element ===jQuery	
+	</script>
+</body>
+</html>

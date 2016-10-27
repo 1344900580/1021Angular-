@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="mapp">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="js/angular.min.js"></script>
+</head>
+<body >
+	<div ng-controller="maincontroller">
+		
+		{{name}}
+	</div>
+
+	<script>
+		var m1  = angular.module("mapp",[]);
+		m1.controller('maincontroller', ['$scope',"$timeout", function($scope,$timeout){
+			$scope.name= "kerwin";
+
+			$timeout(function(){
+				$scope.name= "xiaoming";
+			},1000);
+		}])
+
+
+		/*
+			(1)angular 指令 angular的服务，放心的使用，不需要脏数据的检查。
+			(2) settimout ,settinterval , ajax, ....非angular 方法， 都需要手动进行脏数据检查。
+		*/
+	</script>
+</body>
+</html>

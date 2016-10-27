@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="mapp">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="js/angular.js"></script>
+</head>
+<body >
+	<div ng-controller="maincontroller">
+
+		{{person.name}}介绍<br/>
+
+		性别：{{person.sex}}<br/>
+		年龄：{{person.age}}<br/>
+		工作地点：{{person.location}}
+	
+		<input type="button" value="切换" ng-click="handleClick()"/>
+
+		<!-- ng-****(click ,) 事件绑定方式 -->
+	</div>
+	<script>
+		var m1  = angular.module("mapp",[]);
+		
+		m1.controller('maincontroller', ['$scope', function($scope){
+			$scope.person = {
+				name:"kerwin",
+				sex:"male",
+				age:"100",
+				location:"dalian"
+			}
+			//点击事件 要挂载在$scope
+
+			//1. angular方法不需要脏数据检查
+			$scope.handleClick = function(name){
+				$scope.person = {
+					name:"xiaoming",
+					sex:"male",
+					age:"18",
+					location:"shanghai"
+				}
+			}
+
+			//2. 原生的方法，需要脏数据检查
+			setTimeout(function(){
+
+				//通知界面更新数据（手动脏数据检查）
+				//$scope.$apply(); 所有的变量都进行遍历检查
+				
+				//手动脏数据检查
+				$scope.$apply(function(){
+					$scope.person = {
+						name:"xiaoming",
+						sex:"male",
+						age:"18",
+						location:"shanghai"
+					}
+				})
+			},1000);
+		}])
+
+
+		/*
+			(1)angular 指令 angular的服务，放心的使用，不需要手动脏数据的检查。
+			(2) settimout ,settinterval , ajax, ....非angular 方法， 都需要手动进行脏数据检查。
+
+		*/
+
+	</script>
+</body>
+</html>

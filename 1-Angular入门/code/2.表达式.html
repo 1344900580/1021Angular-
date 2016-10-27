@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="js/angular.js"></script>
+</head>
+<body >
+	<div>
+		{{[0,1,2,3][2]}}
+		
+		{{1==10}}
+
+		{{1>10? "aaa":"bbbb"}}
+
+		变量---{{kerwin}}
+
+		字符串---{{'kerwin'}}
+	</div>
+
+	<!-- {{想象在js 标签内部去写， 如果对于一个字符串不加“” ，就当成变量}} -->
+	<script>
+		var kerwin= "11111111111";
+	</script>
+</body>
+</html>
